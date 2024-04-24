@@ -8,6 +8,7 @@ EMAIL_ADDRESS = "name@example.com"
 PASSWORD = "12345"
 PHONE_NUMBER = "5555555555"
 SEARCH_CRITERIA = "Search"
+LOCATION = "Location"
 
 # Open LinkedIn
 driver = webdriver.Chrome()
@@ -35,10 +36,19 @@ search.send_keys(Keys.ENTER)
 time.sleep(5)
 
 # Select Jobs category
-jobs = driver.find_element(By.CLASS_NAME, "search-reusables__filter-pill-button")
+jobs = driver.find_element(By.XPATH, "//*[@id='search-reusables__filters-bar']/ul/li[2]/button")
 jobs.click()
 
 time.sleep(5)
+
+# Filter by location
+location = driver.find_element(By.CSS_SELECTOR, "[aria-label='City, state, or zip code']")
+location.send_keys(Keys.CONTROL, 'a')
+location.send_keys(LOCATION)
+
+# Search
+search_btn = driver.find_element(By.CLASS_NAME, "jobs-search-box__submit-button")
+search_btn.click()
 
 # Easy Apply filter
 easy_apply_filter = driver.find_element(By.CSS_SELECTOR, "[aria-label='Easy Apply filter.']")
