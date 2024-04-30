@@ -56,6 +56,20 @@ easy_apply_filter.click()
 
 time.sleep(2)
 
+# All filters button
+all_filters = driver.find_element(By.CSS_SELECTOR,
+                                  "[aria-label='Show all filters. Clicking this button displays all available filter options.']")
+all_filters.click()
+
+# Select filters
+time.sleep(5)
+
+# Show results of filters
+show_results = driver.find_element(By.CLASS_NAME, "search-reusables__secondary-filters-show-results-button")
+show_results.click()
+
+time.sleep(3)
+
 # Easy Apply
 easy_apply = driver.find_element(By.CLASS_NAME, "jobs-apply-button")
 easy_apply.click()
